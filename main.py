@@ -17,11 +17,13 @@ for c in courses_html:
   url = base + c.find('a', href = True)['href']
 
   print(text)
+  text_stripped = re.sub(' +', ' ', text).strip()
 
+  
   courses_markdown += ""
   ## {}
   [{}]({})
-  "".format(text, url)
+  "".format(text_stripped, url)
 
 with open("courses.md", "w") as courses_file:
   courses_file.write(courses_markdown)
